@@ -1,5 +1,6 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
+import BookComponent from './BookComponent'
 import './App.css'
 
 // const books = BooksAPI.getAll();
@@ -13,7 +14,6 @@ const TEST_BOOK_IDS = [
   'IOejDAAAQBAJ', //React, read
   '1wy49i-gQjIC', //Satire TV, read
 ]
-
 class BooksApp extends React.Component {
   state = {
     /**
@@ -56,6 +56,16 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
+                <div className="bookshelf">
+                  <h2 className="bookshelf-title">Testing BookComponent</h2>
+                  <div className="bookshelf-books">
+                    <ol className="books-grid">
+                      <li>
+                        <BookComponent/>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">

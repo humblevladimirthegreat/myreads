@@ -1,0 +1,47 @@
+
+APP
+title
+three book shelves (Currently Reading, Want to Read, Previously Read)
+add book (search) button - navigates to /search
+
+BOOK COMPONENT
+the display of a single book. Information gathered using BooksAPI.get
+-title
+-author
+-image
+-move-to menu
+
+BOOK_SHELF COMPONENT
+displays several books in a row. 
+-name
+-list of books
+
+/SEARCH PAGE
+-search bar
+-book shelf of results (updated immediately whenever search query is changed)
+
+PLAN:
+1. create book component (without move-to menu)
+2. create book shelf component
+3. add book move-to functionality
+4. add navigation to search page
+5. implement search functionality
+
+API OBJECTS
+Book:
+-authors: list of str
+-id: str
+-imageLinks: object
+	smallThumbmail: URL
+	thumbnail: URL
+-shelf: str [currentlyReading, wantToRead, read]
+-title: str
+
+-categories: list of str
+-description: str
+-infoLink: URL
+-previewLink: URL
+-subtitle: str
+
+SEARCH TERMS
+'Android', 'Art', 'Artificial Intelligence', 'Astronomy', 'Austen', 'Baseball', 'Basketball', 'Bhagat', 'Biography', 'Brief', 'Business', 'Camus', 'Cervantes', 'Christie', 'Classics', 'Comics', 'Cook', 'Cricket', 'Cycling', 'Desai', 'Design', 'Development', 'Digital Marketing', 'Drama', 'Drawing', 'Dumas', 'Education', 'Everything', 'Fantasy', 'Film', 'Finance', 'First', 'Fitness', 'Football', 'Future', 'Games', 'Gandhi', 'Homer', 'Horror', 'Hugo', 'Ibsen', 'Journey', 'Kafka', 'King', 'Lahiri', 'Larsson', 'Learn', 'Literary Fiction', 'Make', 'Manage', 'Marquez', 'Money', 'Mystery', 'Negotiate', 'Painting', 'Philosophy', 'Photography', 'Poetry', 'Production', 'Programming', 'React', 'Redux', 'River', 'Robotics', 'Rowling', 'Satire', 'Science Fiction', 'Shakespeare', 'Singh', 'Swimming', 'Tale', 'Thrun', 'Time', 'Tolstoy', 'Travel', 'Ultimate', 'Virtual Reality', 'Web Development', 'iOS'

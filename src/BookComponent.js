@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 
-class BooksApp extends React.Component {
+class BookComponent extends React.Component {
 
   render() {
     // const authors = this.props.authors

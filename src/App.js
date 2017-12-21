@@ -1,6 +1,9 @@
 import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from './BooksAPI'
 import './App.css'
+
+// const books = BooksAPI.getAll();
+// console.log(books);
 
 class BooksApp extends React.Component {
   state = {
@@ -202,5 +205,4 @@ class BooksApp extends React.Component {
     )
   }
 }
-
 export default BooksApp

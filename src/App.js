@@ -61,7 +61,11 @@ class BooksApp extends React.Component {
                   <div className="bookshelf-books">
                     <ol className="books-grid">
                       <li>
-                        <BookComponent/>
+                        <BookComponent
+                          title="my title"
+                          authors={["my author", "my author2"]}
+                          imageLinks={{thumbnail: "https://books.google.com/books/content?id=jAUODAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"}}
+                        />
                       </li>
                     </ol>
                   </div>

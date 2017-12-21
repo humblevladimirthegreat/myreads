@@ -4,6 +4,15 @@ import './App.css'
 
 // const books = BooksAPI.getAll();
 // console.log(books);
+const TEST_BOOK_IDS = [
+  'nggnmAEACAAJ', //Linux Command Line, currentlyRead
+  'sJf1vQAACAAJ', //Learning Web Dev, currentlyRead
+  'evuwdDLfAyYC', //Cuckoo's Calling, wantToRead
+  '74XNzF_al3MC', //Lords of Finance, wantToRead
+  'jAUODAAAQBAJ', //Needful Things, read
+  'IOejDAAAQBAJ', //React, read
+  '1wy49i-gQjIC', //Satire TV, read
+]
 
 class BooksApp extends React.Component {
   state = {

@@ -16,10 +16,10 @@ class BookComponent extends React.Component {
   }
 
   render() {
-    const authors = this.props.authors;
-    const imageLink = this.props.imageLinks.thumbnail;
-    // const shelf = this.props.shelf
-    const title = this.props.title;
+    const bookProps = this.props.book;
+    const authors = bookProps.authors;
+    const imageLink = bookProps.imageLinks.thumbnail;
+    const title = bookProps.title;
 
     return (
       <div className="book">

@@ -22,11 +22,7 @@ class BookshelfComponent extends React.Component {
           <ol className="books-grid">
             {books.map(book => (
               <li>
-                <BookComponent
-                  title={book.title}
-                  authors={book.authors}
-                  imageLinks={book.imageLinks}
-                />
+                <BookComponent book={book} />
               </li>
             ))}
           </ol>

@@ -16,6 +16,7 @@ const TEST_BOOK_IDS = [
 ]
 class BooksApp extends React.Component {
   state = {
+    books: [],
     /**
      * TODO: Instead of using this state variable to keep track of which page
      * we're on, use the URL in the browser's address bar. This will ensure that
@@ -23,6 +24,12 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books })
+    })
   }
 
   render() {
@@ -60,13 +67,15 @@ class BooksApp extends React.Component {
                   <h2 className="bookshelf-title">Testing BookComponent</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
-                      <li>
-                        <BookComponent
-                          title="my title"
-                          authors={["my author", "my author2"]}
-                          imageLinks={{thumbnail: "https://books.google.com/books/content?id=jAUODAAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api"}}
-                        />
-                      </li>
+                      {this.state.books.map(book => (
+                        <li>
+                          <BookComponent
+                            title={book.title}
+                            authors={book.authors}
+                            imageLinks={book.imageLinks}
+                          />
+                        </li>
+                      ))}
                     </ol>
                   </div>
                 </div>

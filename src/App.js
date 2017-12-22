@@ -1,7 +1,6 @@
 import React from 'react'
 import {Route, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
-import BookComponent from './BookComponent'
 import BookshelfComponent from './BookshelfComponent'
 import SearchComponent from './SearchComponent'
 import './App.css'

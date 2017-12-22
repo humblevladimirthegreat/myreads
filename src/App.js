@@ -43,13 +43,10 @@ class BooksApp extends React.Component {
             books={this.state.books.filter(book => book.shelf === "read")}
           />
         </div>
-        {/* <div className="open-search">
-          <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-        </div> */}
         <Link
             to="/search"
             className="open-search"
-            ><a className="open-search">Add a book</a></Link>
+            ><a>Add a book</a></Link>  {/* NOTE: getting rid of <a> makes image go away for some reason*/}
       </div>
     )
   }
@@ -59,7 +56,7 @@ class BooksApp extends React.Component {
       <div className="search-books">
         <div className="search-books-bar">
 
-          <a className="close-search" onClick={({history}) => history.push('/')}>Close</a>
+          <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.

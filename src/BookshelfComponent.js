@@ -7,7 +7,7 @@ import './App.css'
 * @description Represents a bookshelf
 * @constructor
 * @param {string} title - The name of the shelf
-* @param {Array.<Object>} author - The books (objects) on the shelf
+* @param {Array.<Object>} books - The books (objects) on the shelf
 */
 class BookshelfComponent extends React.Component {
 

@@ -10,7 +10,21 @@ import './App.css'
 */
 class SearchComponent extends React.Component {
 
+  state = {
+    query: '',
+    books: []
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query })
+    query && query.length >= 3 && //guard since BooksAPI.search requires at least 3 characters
+      BooksAPI.search(this.state.query).then((books) =>
+        this.setState({books})
+    ) //TODO: handle API failure
+  }
+
   render() {
+    const {query, books} = this.state
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -25,12 +39,20 @@ class SearchComponent extends React.Component {
               However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
               you don't find a specific author or title. Every search is limited by search terms.
             */}
-            <input type="text" placeholder="Search by title or author"/>
+            <input type="text" placeholder="Search by title or author"
+              value={query}
+              onChange={(event) => this.updateQuery(event.target.value)}
+            />
 
           </div>
         </div>
         <div className="search-books-results">
-          <ol className="books-grid"></ol>
+          <ol className="books-grid">
+            <BookshelfComponent
+              name="Results"
+              books={books}
+            />
+          </ol>
         </div>
       </div>
     )

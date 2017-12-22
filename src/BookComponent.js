@@ -13,7 +13,7 @@ class BookComponent extends React.Component {
 
   updateShelf(book, shelf) {
     console.log(`updateShelf called with shelf ${shelf} and book ${book}`)
-    BooksAPI.update(book, shelf)
+    shelf !== 'none' && BooksAPI.update(book, shelf)
   }
 
   render() {
@@ -30,11 +30,10 @@ class BookComponent extends React.Component {
            }}></div>
           <div className="book-shelf-changer">
             <select onChange={(event) => this.updateShelf(bookProps, event.target.value)}>
-              <option value="none" disabled>Move to...</option>
+              <option value="none">Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>
-              <option value="none">None</option>
             </select>
           </div>
         </div>

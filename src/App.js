@@ -1,5 +1,5 @@
 import React from 'react'
-import {Route} from 'react-router-dom'
+import {Route, Link} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookComponent from './BookComponent'
 import BookshelfComponent from './BookshelfComponent'
@@ -43,9 +43,13 @@ class BooksApp extends React.Component {
             books={this.state.books.filter(book => book.shelf === "read")}
           />
         </div>
-        <div className="open-search">
+        {/* <div className="open-search">
           <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
-        </div>
+        </div> */}
+        <Link
+            to="/search"
+            className="open-search"
+            ><a className="open-search">Add a book</a></Link>
       </div>
     )
   }
@@ -54,7 +58,8 @@ class BooksApp extends React.Component {
     return (
       <div className="search-books">
         <div className="search-books-bar">
-          <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+
+          <a className="close-search" onClick={({history}) => history.push('/')}>Close</a>
           <div className="search-books-input-wrapper">
             {/*
               NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -78,7 +83,6 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {/* {this.renderMainPage()} */}
         <Route exact path="/" render={() => (
           this.renderMainPage()
         )} />

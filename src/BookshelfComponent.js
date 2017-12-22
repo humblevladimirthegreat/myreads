@@ -7,8 +7,8 @@ import './App.css'
 class BookshelfComponent extends React.Component {
 
   render() {
-    const books = this.props.books
-    const name = this.props.name
+    const books = this.props.books;
+    const name = this.props.name;
 
     return (
       <div className="bookshelf">

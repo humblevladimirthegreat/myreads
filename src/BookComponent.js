@@ -2,7 +2,13 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
-
+/**
+* @description Represents a book
+* @constructor
+* @param {string} title - The title of the book
+* @param {Array.<String>} authors - The books (objects) on the shelf
+* @param {string} imageLinks - the URLs to the thumbnail images
+*/
 class BookComponent extends React.Component {
 
   render() {

@@ -11,6 +11,10 @@ import './App.css'
 */
 class BookComponent extends React.Component {
 
+  updateShelf(book, shelf) {
+    BooksAPI.update(book, shelf)
+  }
+
   render() {
     const authors = this.props.authors;
     const imageLink = this.props.imageLinks.thumbnail;

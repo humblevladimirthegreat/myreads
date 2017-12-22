@@ -1,6 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import BookComponent from './BookComponent'
+import BookshelfComponent from './BookshelfComponent'
 import './App.css'
 
 // const books = BooksAPI.getAll();
@@ -63,22 +64,10 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Testing BookComponent</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {this.state.books.map(book => (
-                        <li>
-                          <BookComponent
-                            title={book.title}
-                            authors={book.authors}
-                            imageLinks={book.imageLinks}
-                          />
-                        </li>
-                      ))}
-                    </ol>
-                  </div>
-                </div>
+                <BookshelfComponent
+                  name="Testing BookshelfComponent"
+                  books={this.state.books}
+                />
                 <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">

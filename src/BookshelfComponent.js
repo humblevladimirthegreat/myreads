@@ -3,7 +3,12 @@ import * as BooksAPI from './BooksAPI'
 import BookComponent from './BookComponent'
 import './App.css'
 
-
+/**
+* @description Represents a bookshelf
+* @constructor
+* @param {string} title - The name of the shelf
+* @param {Array.<Object>} author - The books (objects) on the shelf
+*/
 class BookshelfComponent extends React.Component {
 
   render() {

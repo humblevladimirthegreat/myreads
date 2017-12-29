@@ -2,6 +2,8 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 
+const DEFAULT_BOOK_IMAGE = "http://www.clker.com/cliparts/7/e/O/F/z/Y/blank-book-hi.png"
+
 /**
 * @description Represents a book
 * @constructor
@@ -15,7 +17,7 @@ class BookComponent extends React.Component {
   render() {
     const bookProps = this.props.book;
     const authors = bookProps.authors || [];
-    const imageLink = bookProps.imageLinks.thumbnail; 
+    const imageLink = bookProps.imageLinks ? bookProps.imageLinks.thumbnail : DEFAULT_BOOK_IMAGE;
     const title = bookProps.title;
     const onUpdate = this.props.onUpdate;
     const bookRetriever = this.props.bookRetriever;

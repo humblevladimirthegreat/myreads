@@ -11,7 +11,7 @@ import './App.css'
 class BookshelfComponent extends React.Component {
 
   render() {
-    const books = this.props.books;
+    const books = this.props.books || [];
     const name = this.props.name;
     const onUpdate = this.props.onUpdate;
     const bookRetriever = this.props.bookRetriever;

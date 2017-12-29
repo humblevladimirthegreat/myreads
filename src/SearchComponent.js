@@ -21,18 +21,24 @@ class SearchComponent extends React.Component {
   * @param {Object[]} booksOnShelves - the book objects already on shelves
   */
   updateQuery = (query, booksOnShelves) => {
-    this.setState({ query })
-    query && query.length >= 3 && //guard since BooksAPI.search requires at least 3 characters
-      BooksAPI.search(this.state.query).then((searchedBooks) => {
-        let booksWithShelves = (searchedBooks || []).map((searchBook) => {
+    this.setState({ query });
+    if(query && query.length > 3){ //guard since BooksAPI.search requires at least 3 characters
+      BooksAPI.search(this.state.query).then((searchResponse) => {
+        const searchedBooks = Array.isArray(searchResponse) ? searchResponse : [] // check if returned any books
+        const booksWithShelves = searchedBooks.map((searchBook) => {
+          searchBook.shelf = "none"; // default if book not found on shelf
           const bookWithShelf = booksOnShelves.find((shelfBook) => (shelfBook.id === searchBook.id));
-          return bookWithShelf || searchBook;
+          return bookWithShelf || searchBook; // if book on a shelf, then just use it. Otherwise use searched book
         });
         this.setState({books: booksWithShelves})
-    }).catch((e) => {
-      this.setState({error: "Error -- "+e});
-      console.log('error:', e);
-    })
+      }).catch((e) => {
+        this.setState({error: "Error -- "+e});
+        console.log('error:', e);
+      });
+    }
+    else{
+      this.setState({ books: [] });
+    }
   }
 
   render() {

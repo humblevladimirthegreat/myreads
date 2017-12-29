@@ -23,13 +23,17 @@ class BooksApp extends React.Component {
     })
   }
 
-  updateShelf(book, shelf) {
-    console.log(`updateShelf called with shelf ${shelf} and book ${book}`)
+  props = {
+    retrieveBooks: this.retrieveBooks
+  };
+
+  updateShelf(book, shelf, bookRetriever) {
+    console.log(`updateShelf called with shelf ${shelf} and book ${book} and funcion ${bookRetriever}`)
     if (shelf !== 'none'){
-      this.bookapp = this;
+      // const bookapp = props.retrieveBooks;
       BooksAPI.update(book, shelf).then((response) => {
         console.log("Book updated");
-        this.bookapp.retrieveBooks();
+        bookRetriever();
       });
     }
   }
@@ -49,16 +53,19 @@ class BooksApp extends React.Component {
             name="Currently Reading"
             books={this.state.books.filter(book => book.shelf === "currentlyReading")}
             onUpdate={this.updateShelf}
+            bookRetriever={this.retrieveBooks}
           />
           <BookshelfComponent
             name="Want to Read"
             books={this.state.books.filter(book => book.shelf === "wantToRead")}
             onUpdate={this.updateShelf}
+            bookRetriever={this.retrieveBooks}
           />
           <BookshelfComponent
             name="Read"
             books={this.state.books.filter(book => book.shelf === "read")}
             onUpdate={this.updateShelf}
+            bookRetriever={this.retrieveBooks}
           />
         </div>
         <Link

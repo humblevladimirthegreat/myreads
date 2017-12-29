@@ -14,6 +14,9 @@ class BookshelfComponent extends React.Component {
     const books = this.props.books;
     const name = this.props.name;
     const onUpdate = this.props.onUpdate;
+    const bookRetriever = this.props.bookRetriever;
+    console.log(`BookShelf received onUpdate = ${onUpdate}`); //correctly receives function
+    console.log(`BookShelf received retrieveBooks = ${bookRetriever}`); //is undefined. WHAT?!
 
     return (
       <div className="bookshelf">
@@ -22,7 +25,11 @@ class BookshelfComponent extends React.Component {
           <ol className="books-grid">
             {books.map(book => (
               <li key={book.id}>
-                <BookComponent book={book} onUpdate={onUpdate} />
+                <BookComponent
+                  book={book}
+                  onUpdate={onUpdate}
+                  bookRetriever={bookRetriever}
+                />
               </li>
             ))}
           </ol>

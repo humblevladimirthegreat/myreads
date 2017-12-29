@@ -31,7 +31,6 @@ class BookshelfComponent extends React.Component {
           </ol>
         </div>
       </div>
-
     )
   }
 }

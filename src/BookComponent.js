@@ -48,7 +48,6 @@ class BookComponent extends React.Component {
         <div className="book-title">{title}</div>
         <div className="book-authors">{authors.join(", ")}</div>
       </div>
-
     )
   }
 }

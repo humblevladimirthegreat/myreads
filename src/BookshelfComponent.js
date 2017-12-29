@@ -13,10 +13,7 @@ class BookshelfComponent extends React.Component {
   render() {
     const books = this.props.books || [];
     const name = this.props.name;
-    const onUpdate = this.props.onUpdate;
-    const bookRetriever = this.props.bookRetriever;
-    console.log(`BookShelf received onUpdate = ${onUpdate}`); //correctly receives function
-    console.log(`BookShelf received retrieveBooks = ${bookRetriever}`); //is undefined. WHAT?!
+    const updateShelf = this.props.updateShelf;
 
     return (
       <div className="bookshelf">
@@ -27,8 +24,7 @@ class BookshelfComponent extends React.Component {
               <li key={book.id}>
                 <BookComponent
                   book={book}
-                  onUpdate={onUpdate}
-                  bookRetriever={bookRetriever}
+                  updateShelf={updateShelf}
                 />
               </li>
             ))}

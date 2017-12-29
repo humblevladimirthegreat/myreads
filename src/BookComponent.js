@@ -19,9 +19,7 @@ class BookComponent extends React.Component {
     const authors = bookProps.authors || [];
     const imageLink = bookProps.imageLinks ? bookProps.imageLinks.thumbnail : DEFAULT_BOOK_IMAGE;
     const title = bookProps.title;
-    const onUpdate = this.props.onUpdate;
-    const bookRetriever = this.props.bookRetriever;
-    console.log(`BookComponent received BookRetriever = ${bookRetriever}`)
+    const updateShelf = this.props.updateShelf;
 
     return (
       <div className="book">
@@ -30,7 +28,7 @@ class BookComponent extends React.Component {
             backgroundImage: `url("${imageLink}")`
            }}></div>
           <div className="book-shelf-changer">
-            <select onChange={(event) => onUpdate(bookProps, event.target.value, bookRetriever)}>
+            <select onChange={(event) => updateShelf(bookProps, event.target.value)}>
               <option value="none">Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>

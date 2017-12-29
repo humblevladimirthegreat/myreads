@@ -17,10 +17,25 @@ class BooksApp extends React.Component {
     showSearchPage: false
   };
 
-  componentDidMount() {
+  retrieveBooks(){
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
     })
+  }
+
+  updateShelf(book, shelf) {
+    console.log(`updateShelf called with shelf ${shelf} and book ${book}`)
+    if (shelf !== 'none'){
+      this.bookapp = this;
+      BooksAPI.update(book, shelf).then((response) => {
+        console.log("Book updated");
+        this.bookapp.retrieveBooks();
+      });
+    }
+  }
+
+  componentDidMount() {
+    this.retrieveBooks();
   }
 
   renderMainPage() {
@@ -33,14 +48,17 @@ class BooksApp extends React.Component {
           <BookshelfComponent
             name="Currently Reading"
             books={this.state.books.filter(book => book.shelf === "currentlyReading")}
+            onUpdate={this.updateShelf}
           />
           <BookshelfComponent
             name="Want to Read"
             books={this.state.books.filter(book => book.shelf === "wantToRead")}
+            onUpdate={this.updateShelf}
           />
           <BookshelfComponent
             name="Read"
             books={this.state.books.filter(book => book.shelf === "read")}
+            onUpdate={this.updateShelf}
           />
         </div>
         <Link

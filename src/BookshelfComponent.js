@@ -13,6 +13,7 @@ class BookshelfComponent extends React.Component {
   render() {
     const books = this.props.books;
     const name = this.props.name;
+    const onUpdate = this.props.onUpdate;
 
     return (
       <div className="bookshelf">
@@ -21,7 +22,7 @@ class BookshelfComponent extends React.Component {
           <ol className="books-grid">
             {books.map(book => (
               <li key={book.id}>
-                <BookComponent book={book} />
+                <BookComponent book={book} onUpdate={onUpdate} />
               </li>
             ))}
           </ol>

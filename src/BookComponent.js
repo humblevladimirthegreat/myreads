@@ -11,16 +11,12 @@ import './App.css'
 */
 class BookComponent extends React.Component {
 
-  updateShelf(book, shelf) {
-    console.log(`updateShelf called with shelf ${shelf} and book ${book}`)
-    shelf !== 'none' && BooksAPI.update(book, shelf)
-  }
-
   render() {
     const bookProps = this.props.book;
     const authors = bookProps.authors || [];
     const imageLink = bookProps.imageLinks.thumbnail;
     const title = bookProps.title;
+    const onUpdate = this.props.onUpdate;
 
     return (
       <div className="book">
@@ -29,7 +25,7 @@ class BookComponent extends React.Component {
             backgroundImage: `url("${imageLink}")`
            }}></div>
           <div className="book-shelf-changer">
-            <select onChange={(event) => this.updateShelf(bookProps, event.target.value)}>
+            <select onChange={(event) => onUpdate(bookProps, event.target.value)}>
               <option value="none">Move to...</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>

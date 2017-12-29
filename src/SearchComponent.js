@@ -5,15 +5,20 @@ import BookshelfComponent from './BookshelfComponent'
 import './App.css'
 
 /**
-* @description The search page
+* @description The search component allows users to search for books and add them to shelves
 */
 class SearchComponent extends React.Component {
 
   state = {
-    query: '',
-    books: []
+    query: '',  // the current search query
+    books: []  //  the books returned by the search
   }
 
+  /**
+  * @description Calls the search API and stores the books
+  * @param {string} query - the string the user entered
+  * @param {Object[]} booksOnShelves - the book objects already on shelves
+  */
   updateQuery = (query, booksOnShelves) => {
     this.setState({ query })
     query && query.length >= 3 && //guard since BooksAPI.search requires at least 3 characters

@@ -14,6 +14,15 @@ const DEFAULT_BOOK_IMAGE = "http://www.clker.com/cliparts/7/e/O/F/z/Y/blank-book
 
 class BookComponent extends React.Component {
 
+  getOption(shelfValue, shelfText, currentShelf){
+    if (shelfValue === currentShelf) {
+      return (<option value={shelfValue} disabled="disabled">{shelfText + " (current)"}</option>);
+    }
+    else {
+      return (<option value={shelfValue}>{shelfText}</option>);
+    }
+  }
+
   render() {
     const bookProps = this.props.book;
     const authors = bookProps.authors || [];
@@ -29,10 +38,10 @@ class BookComponent extends React.Component {
            }}></div>
           <div className="book-shelf-changer">
             <select onChange={(event) => updateShelf(bookProps, event.target.value)}>
-              <option value="none">Move to...</option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
+              {this.getOption("none", "Move to...", bookProps.shelf)}
+              {this.getOption("currentlyReading", "Currenty Reading", bookProps.shelf)}
+              {this.getOption("wantToRead", "Want to Read", bookProps.shelf)}
+              {this.getOption("read", "Read", bookProps.shelf)}
             </select>
           </div>
         </div>

@@ -38,7 +38,8 @@ class BookComponent extends React.Component {
            }}></div>
           <div className="book-shelf-changer">
             <select onChange={(event) => updateShelf(bookProps, event.target.value)}>
-              {this.getOption("none", "Move to...", bookProps.shelf)}
+              {this.getOption("", "Move to...", bookProps.shelf)}
+              {this.getOption("none", "None", bookProps.shelf)}
               {this.getOption("currentlyReading", "Currenty Reading", bookProps.shelf)}
               {this.getOption("wantToRead", "Want to Read", bookProps.shelf)}
               {this.getOption("read", "Read", bookProps.shelf)}

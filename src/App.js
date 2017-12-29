@@ -17,11 +17,9 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
-    if (shelf !== 'none'){
-      BooksAPI.update(book, shelf).then((response) => {
-        this.retrieveBooks();
-      });
-    }
+    BooksAPI.update(book, shelf).then((response) => {
+      this.retrieveBooks();
+    });
   }
 
   componentDidMount() {

@@ -8,7 +8,7 @@ const DEFAULT_BOOK_IMAGE = "http://www.clker.com/cliparts/7/e/O/F/z/Y/blank-book
 * @description Represents a book
 * @constructor
 * @param {string} title - The title of the book
-* @param {Array.<String>} authors - The books (objects) on the shelf
+* @param {string[]} authors - The books (objects) on the shelf
 * @param {string} imageLinks - the URLs to the thumbnail images
 */
 

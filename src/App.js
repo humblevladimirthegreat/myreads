@@ -5,12 +5,18 @@ import BookshelfComponent from './BookshelfComponent'
 import SearchComponent from './SearchComponent'
 import './App.css'
 
+/**
+* @description The main component that shows the books on shelves to users
+*/
 class BooksApp extends React.Component {
   state = {
-    books: [],
-    error: ''
+    books: [], // the books on shelves
+    error: ''  // any error message to be shown
   };
 
+  /**
+  * @description Gets books of current user from the server
+  */
   retrieveBooks(){
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
@@ -19,6 +25,12 @@ class BooksApp extends React.Component {
       console.log('error:', e);
     });
   }
+
+  /**
+  * @description updates given book with a new shelf.
+  * @param {Object} book - the book to be updated
+  * @param {string} shelf - the new shelf of the book [none, currentlyReading, wantToRead, read]
+  */
 
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((response) => {
@@ -33,6 +45,10 @@ class BooksApp extends React.Component {
     this.retrieveBooks();
   }
 
+
+  /**
+  * @description shows the main page with shelves (as opposed to search page)
+  */
   renderMainPage() {
     return (
       <div className="list-books">
@@ -67,6 +83,9 @@ class BooksApp extends React.Component {
     )
   }
 
+  /**
+  * @description Renders either main or search page depnding on URL route.
+  */
   render() {
     return (
       <div className="app">

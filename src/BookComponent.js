@@ -14,6 +14,12 @@ const DEFAULT_BOOK_IMAGE = "http://www.clker.com/cliparts/7/e/O/F/z/Y/blank-book
 
 class BookComponent extends React.Component {
 
+  /**
+  * @description Calls the search API and stores the books
+  * @param {string} shelfValue - the value of this option [none, currentlyReading, wantToRead, read]
+  * @param {string} shelfText - the text to display for this option
+  * @param {string} currentShelf - the shelf of the book being considered [none, currentlyReading, wantToRead, read]
+  */
   getOption(shelfValue, shelfText, currentShelf){
     if (shelfValue === currentShelf) {
       return (<option value={shelfValue} disabled="disabled">{shelfText + " (current)"}</option>);

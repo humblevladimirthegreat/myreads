@@ -14,18 +14,23 @@ class SearchComponent extends React.Component {
     books: []
   }
 
-  updateQuery = (query) => {
+  updateQuery = (query, booksOnShelves) => {
     this.setState({ query })
     query && query.length >= 3 && //guard since BooksAPI.search requires at least 3 characters
-      BooksAPI.search(this.state.query).then((books) =>
-        this.setState({books})
-    ) //TODO: handle API failure
+      BooksAPI.search(this.state.query).then((searchedBooks) => {
+        let booksWithShelves = (searchedBooks || []).map((searchBook) => {
+          const bookWithShelf = booksOnShelves.find((shelfBook) => (shelfBook.id === searchBook.id));
+          return bookWithShelf || searchBook;
+        });
+        this.setState({books: booksWithShelves})
+    }); //TODO: handle API failure
   }
 
   render() {
     const query = this.state.query
     const books = this.state.books || [];
     const updateShelf = this.props.updateShelf;
+    const booksOnShelves = this.props.booksOnShelves;
 
     return (
       <div className="search-books">
@@ -43,7 +48,7 @@ class SearchComponent extends React.Component {
             */}
             <input type="text" placeholder="Search by title or author"
               value={query}
-              onChange={(event) => this.updateQuery(event.target.value)}
+              onChange={(event) => this.updateQuery(event.target.value, booksOnShelves)}
             />
 
           </div>

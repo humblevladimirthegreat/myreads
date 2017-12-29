@@ -7,18 +7,25 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    error: ''
   };
 
   retrieveBooks(){
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-    })
+    }).catch((e) => {
+      this.setState({error: "Error -- "+e});
+      console.log('error:', e);
+    });
   }
 
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((response) => {
       this.retrieveBooks();
+    }).catch((e) => {
+      this.setState({error: e.message});
+      console.log('error:', e.message);
     });
   }
 
@@ -31,6 +38,9 @@ class BooksApp extends React.Component {
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
+        </div>
+        <div className="error-message">
+          {this.state.error}
         </div>
         <div className="list-books-content">
           <BookshelfComponent

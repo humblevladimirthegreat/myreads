@@ -11,7 +11,8 @@ class SearchComponent extends React.Component {
 
   state = {
     query: '',  // the current search query
-    books: []  //  the books returned by the search
+    books: [],   // the books returned by the search
+    error: '',  // error message (if any)
   }
 
   /**
@@ -28,12 +29,16 @@ class SearchComponent extends React.Component {
           return bookWithShelf || searchBook;
         });
         this.setState({books: booksWithShelves})
-    }); //TODO: handle API failure
+    }).catch((e) => {
+      this.setState({error: "Error -- "+e});
+      console.log('error:', e);
+    })
   }
 
   render() {
-    const query = this.state.query
+    const query = this.state.query;
     const books = this.state.books || [];
+    const error = this.state.error;
     const updateShelf = this.props.updateShelf;
     const booksOnShelves = this.props.booksOnShelves;
 
@@ -49,6 +54,9 @@ class SearchComponent extends React.Component {
           </div>
         </div>
         <div className="search-books-results">
+          <div className="error-message">
+            {error}
+          </div>
           <ol className="books-grid">
             <BookshelfComponent
               name="Results"

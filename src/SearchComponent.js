@@ -23,7 +23,10 @@ class SearchComponent extends React.Component {
   }
 
   render() {
-    const {query, books} = this.state
+    const query = this.state.query
+    const books = this.state.books || [];
+    const updateShelf = this.props.updateShelf;
+
     return (
       <div className="search-books">
         <div className="search-books-bar">
@@ -50,6 +53,7 @@ class SearchComponent extends React.Component {
             <BookshelfComponent
               name="Results"
               books={books}
+              updateShelf={updateShelf}
             />
           </ol>
         </div>

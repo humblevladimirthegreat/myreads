@@ -1,10 +1,11 @@
 import React from 'react'
-import {Route, Link} from 'react-router-dom'
+import {Route, Link, Switch} from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import BookshelfComponent from './BookshelfComponent'
 import SearchComponent from './SearchComponent'
+import MissingPageComponent from './MissingPageComponent'
 import './App.css'
-
+// console.log("imported bookshelf:"+BookshelfComponent);
 /**
 * @description The main component that shows the books on shelves to users
 */
@@ -89,15 +90,18 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        <Route exact path="/" render={() => (
-          this.renderMainPage()
-        )} />
-        <Route exact path="/search" render={() => (
-          <SearchComponent
-            updateShelf={this.updateShelf}
-            booksOnShelves={this.state.books}
-          />
-        )} />
+        <Switch>
+          <Route exact path="/" render={() => (
+            this.renderMainPage()
+          )} />
+          <Route exact path="/search" render={() => (
+            <SearchComponent
+              updateShelf={this.updateShelf}
+              booksOnShelves={this.state.books}
+            />
+          )} />
+          <Route component={MissingPageComponent}/>
+      </Switch>
       </div>
     )
   }

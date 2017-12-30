@@ -78,7 +78,7 @@ class BooksApp extends React.Component {
         <Link
             to="/search"
             className="open-search"
-            ><a>Add a book</a></Link>  {/* NOTE: getting rid of <a> makes image go away for some reason*/}
+            >Add a book</Link>
       </div>
     )
   }

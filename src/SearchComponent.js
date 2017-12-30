@@ -22,8 +22,8 @@ class SearchComponent extends React.Component {
   */
   updateQuery = (query, booksOnShelves) => {
     this.setState({ query });
-    if(query && query.length > 3){ //guard since BooksAPI.search requires at least 3 characters
-      BooksAPI.search(this.state.query).then((searchResponse) => {
+    if(query){
+      BooksAPI.search(query).then((searchResponse) => {
         const searchedBooks = Array.isArray(searchResponse) ? searchResponse : [] // check if returned any books
         const booksWithShelves = searchedBooks.map((searchBook) => {
           searchBook.shelf = "none"; // default if book not found on shelf

@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 
-const DEFAULT_BOOK_IMAGE = "http://www.clker.com/cliparts/7/e/O/F/z/Y/blank-book-hi.png"
+const DEFAULT_BOOK_IMAGE = "http://via.placeholder.com/128x193?text=No%20Cover"
 
 /**
 * @description Represents a book

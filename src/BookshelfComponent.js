@@ -7,31 +7,24 @@ import './App.css'
 * @constructor
 * @param {string} title - The name of the shelf
 * @param {Object[]} books - The books (objects) on the shelf
+* @param {function} updateShelf - the function from App.js that updates shelf
 */
-class BookshelfComponent extends React.Component {
+const BookshelfComponent = (props) => (
 
-  render() {
-    const books = this.props.books || [];
-    const name = this.props.name;
-    const updateShelf = this.props.updateShelf;
-
-    return (
       <div className="bookshelf">
-        <h2 className="bookshelf-title">{name}</h2>
+        <h2 className="bookshelf-title">{props.name}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {books.map(book => (
+            {(props.books || []).map(book => (
               <li key={book.id}>
                 <BookComponent
                   book={book}
-                  updateShelf={updateShelf}
+                  updateShelf={props.updateShelf}
                 />
               </li>
             ))}
           </ol>
         </div>
       </div>
-    )
-  }
-}
+)
 export default BookshelfComponent
